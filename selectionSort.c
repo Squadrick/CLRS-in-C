@@ -38,4 +38,6 @@ int main()
 	}
 	for(i = 0; i < num; i++)
 		printf("%d\n", *(ptr+i));
+
+	free(ptr);
 }
