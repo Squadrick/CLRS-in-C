@@ -18,16 +18,16 @@ void merge(int *ptr, int start, int mid, int end)
 		else
 			*(ptr_new + i++) = *(ptr + k++);
 	}
-	
-	while(k <= end) 
+
+	while(k <= end)
 		*(ptr_new + i++) = *(ptr + k++);
 
-	while(j < mid) 
+	while(j < mid)
 		*(ptr_new + i++) = *(ptr + j++);
 
-	for(int i = 0; i < size; i++) 
+	for(int i = 0; i < size; i++)
 		*(ptr+start+i) = *(ptr_new+i);
-	
+
 	free(ptr_new);
 }
 
@@ -48,7 +48,7 @@ int main()
 	scanf("%d", &num);
 	ptr = (int*) malloc(num * sizeof(int));
 
-	for(i = 0; i < num; i++) 
+	for(i = 0; i < num; i++)
 		*(ptr + i) = rand() % 16;
 
 	sort(ptr, 0, num - 1);
