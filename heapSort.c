@@ -56,9 +56,9 @@ void heapSort(int* array, int size)
 	{
 		swap(maxHeap->array, maxHeap->array + maxHeap->size - 1);
 		--maxHeap->size;
-
 		heapify(maxHeap, 0);
 	}
+	free(maxHeap);
 }
 
 int main()
@@ -75,6 +75,7 @@ int main()
 	
 	for(i = 0; i < size; i++)
 		printf("%d\n", *(arr + i));
-
+	
+	free(arr);
 	return 0;
 }
