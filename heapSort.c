@@ -38,12 +38,11 @@ void heapify(struct MaxHeap* maxHeap, int idx)
 
 struct MaxHeap* createHeap(int *array, int size)
 {
-	int i;
 	struct MaxHeap* maxHeap = (struct MaxHeap*) malloc(sizeof(struct MaxHeap));
 	maxHeap->array = array;
 	maxHeap->size = size;
 
-	for(i = (maxHeap->size - 2) / 2; i >= 0; i--)
+	for(int i = (maxHeap->size - 2) / 2; i >= 0; i--)
 		heapify(maxHeap, i);
 
 	return maxHeap;
