@@ -31,7 +31,7 @@ void heapify(struct MaxHeap* maxHeap, int idx)
 
 	if(largest != idx)
 	{
-		swap(&maxHeap->array[idx], &maxHeap->array[largest]);
+		swap(maxHeap->array + idx, maxHeap->array + largest);
 		heapify(maxHeap, largest);
 	}
 }
