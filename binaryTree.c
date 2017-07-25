@@ -74,7 +74,6 @@ int main()
 	addLeftChild(root->right, 6);
 	addRightChild(root->right, 7);
 	
-	addRightChild(root, 8);
 	traverse(root);
 	recursiveFree(root);
 }

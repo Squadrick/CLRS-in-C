@@ -18,14 +18,14 @@ void swap(int* a, int* b)
 void heapify(struct MaxHeap* maxHeap, int idx)
 {
 	int largest = idx;
-	int left = (idx << 1) + 1;
-	int right = (idx + 1) << 1;
+	int left = (idx * 2) + 1;
+	int right = (idx + 1) * 2;
 
-	if( left < maxHeap->size && 
+	if(left < maxHeap->size && 
 			maxHeap->array[left] > maxHeap->array[largest])	
 		largest = left;
 
-	if( right < maxHeap->size && 
+	if(right < maxHeap->size && 
 			maxHeap->array[right] > maxHeap->array[largest])
 		largest = right;
 
