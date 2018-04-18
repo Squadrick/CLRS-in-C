@@ -178,7 +178,8 @@ int** getAdjMatrix(Graph_t *g){
 
 	for(unsigned int i = 0; i < g->totalVertices; i++) {
 		mat[i] = (int*) malloc(g->totalVertices*sizeof(int));
-		for(unsigned int j = 0; j < g->totalVertices; mat[i][j++] = 0);
+		for(unsigned int j = 0; j < g->totalVertices; mat[i][j++] = 999);
+		mat[i][i] = 0;
 		AdjListNode_t *iter = g->adjListArr[i].head;
 		while(iter != NULL) {
 			mat[i][iter->vertex] = iter->edgeWeight;
