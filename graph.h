@@ -158,3 +158,32 @@ void deleteVertex(Graph_t* graph, int src) {
 	graph->adjListArr[src].head = NULL;
 }
 
+int** getBooleanMatrix(Graph_t *g){
+	int **mat = (int**) malloc(g->totalVertices*sizeof(int*));
+
+	for(unsigned int i = 0; i < g->totalVertices; i++) {
+		mat[i] = (int*) malloc(g->totalVertices*sizeof(int));
+		for(unsigned int j = 0; j < g->totalVertices; mat[i][j++] = 0);
+		AdjListNode_t *iter = g->adjListArr[i].head;
+		while(iter != NULL) {
+			mat[i][iter->vertex] = 1;
+			iter = iter->next;
+		}
+	}
+	return mat;
+}
+
+int** getAdjMatrix(Graph_t *g){
+	int **mat = (int**) malloc(g->totalVertices*sizeof(int*));
+
+	for(unsigned int i = 0; i < g->totalVertices; i++) {
+		mat[i] = (int*) malloc(g->totalVertices*sizeof(int));
+		for(unsigned int j = 0; j < g->totalVertices; mat[i][j++] = 0);
+		AdjListNode_t *iter = g->adjListArr[i].head;
+		while(iter != NULL) {
+			mat[i][iter->vertex] = iter->edgeWeight;
+			iter = iter->next;
+		}
+	}
+	return mat;
+}
