@@ -100,7 +100,6 @@ void addEdge(Graph_t *graph, unsigned int src, unsigned int dest, int weight) {
 	graph->totalEdges++;
 	
 	if(graph->typeOfGraph == UNDIRECTED) {
-		printf("test\n");
 		newNode = createAdjacentNode(src, weight);
 		
 		addNodeToList(&(graph->adjListArr[dest]), newNode);
@@ -158,3 +157,4 @@ void deleteVertex(Graph_t* graph, int src) {
 
 	graph->adjListArr[src].head = NULL;
 }
+
