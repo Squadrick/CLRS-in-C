@@ -10,9 +10,6 @@ void _dfs(Graph_t *g, int src, int *visited) {
 	visited[src] = 1;
 
 	AdjListNode_t *iter = g->adjListArr[src].head;
-	if(iter == NULL)
-		return;
-
 	printf("%d\n", src);
 
 	while(iter != NULL) {
@@ -22,22 +19,19 @@ void _dfs(Graph_t *g, int src, int *visited) {
 }
 
 
-void dfs(Graph_t *g, int src) {
+void dfs(Graph_t *g) {
 	int *visited = (int*)malloc(g->totalVertices*sizeof(int));
 
 	for(unsigned int i = 0; i < g->totalVertices; visited[i++] = 0);
 	
-	_dfs(g, src, visited);
-
 	for(unsigned int i = 0; i < g->totalVertices; i++) {
-		if(visited[i] == 1) continue;
 		_dfs(g, i, visited);
 	}
 	free(visited);
 }
 
 int main() {
-	Graph_t *g = createGraph(10, UNDIRECTED);
+	Graph_t *g = createGraph(10, DIRECTED);
 
 	addEdge(g, 0, 1, 1);
 	addEdge(g, 0, 2, 1);
@@ -52,5 +46,5 @@ int main() {
 	addEdge(g, 4, 5, 1);
 	
 	displayGraph(g);
-	dfs(g, 5);
+	dfs(g);
 }
