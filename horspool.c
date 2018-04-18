@@ -3,6 +3,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int max(int a, int b) {
+	return a > b ? a:b;
+}
+
 int* preprocess(char *pattern, int length) {
 	int *table = (int*) malloc(MAX_TABLE*sizeof(int));
 	for(int i = 0; i < MAX_TABLE; table[i++] = length);
@@ -25,15 +29,13 @@ int search(char *str, int sLen, char *pattern, int pLen ) {
 			if(i == 0) return skip;
 			i--;
 		}
-		printf("skip: %d\n", skip);
-		printf("Skip letter: %c\n", str[skip+pLen-1]);
-		skip += table[str[skip + pLen - 1]];
+		skip += max(table[str[skip + pLen - 1]], 1);
 	}
 	return -1;
 }
 
 int main() {
-	char *haystack = "test is a tit";
+	char *haystack = "test it a tit";
 	char *needle = "tit";
 
 	printf("%d\n", search(haystack, 13, needle, 3));
