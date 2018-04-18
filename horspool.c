@@ -11,7 +11,7 @@ int* preprocess(char *pattern, int length) {
 	int *table = (int*) malloc(MAX_TABLE*sizeof(int));
 	for(int i = 0; i < MAX_TABLE; table[i++] = length);
 
-	for(int i = 0; i < length; i++) {
+	for(int i = 0; i < length-1; i++) {
 		table[pattern[i]] = length - (i + 1);
 	}
 
@@ -29,7 +29,7 @@ int search(char *str, int sLen, char *pattern, int pLen ) {
 			if(i == 0) return skip;
 			i--;
 		}
-		skip += max(table[str[skip + pLen - 1]], 1);
+		skip += table[str[skip + pLen - 1]];
 	}
 	return -1;
 }
